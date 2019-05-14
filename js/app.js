@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       const li = document.createElement('li');
       appendToLI('span', 'textContent', text);
-      appendToLI('label', 'textContent', 'Confirmed')
+      appendToLI('label', 'textContent', 'Confirm')
         .appendChild(createElement('input', 'type', 'checkbox'));
       appendToLI('button', 'textContent', 'edit');
       appendToLI('button', 'textContent', 'remove');
@@ -69,13 +69,14 @@ document.addEventListener('DOMContentLoaded', () => {
     ul.addEventListener('change', (e) => {
       const checkbox = e.target;
       const checked = checkbox.checked;
+      let label = checkbox.parentNode.childNodes[0];
       const listItem = checkbox.parentNode.parentNode;
-      // this makes list item have border
       if (checked === true) {
-        listItem.className = 'responded'
-        // this makes list item have no border
+        listItem.className = 'responded';
+        label.nodeValue = 'Confirmed';
       } else {
         listItem.className = '';
+        label.nodeValue = 'Confirm';
       }
     });
     
