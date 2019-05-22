@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const div = document.createElement('div');
     const filterLabel = document.createElement('label');
     const filterCheckBox = document.createElement('input');
-    
+    const error = document.getElementById('error');
     // creates filtering checkbox
     filterLabel.textContent = ("Hide those who haven't responded");
     filterCheckBox.type = 'checkbox';
@@ -57,12 +57,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     // takes name and turns it into list item
+    // form validation to display error if input is empty
     form.addEventListener('submit', (e) => {
       e.preventDefault();
-      const name = input.value;
-      input.value = '';
-      const li = createLI(name);
-      ul.appendChild(li);
+      if(input.value === '') {
+        error.style.display = 'block';
+      } else {
+          error.style.display = 'none';
+          const name = input.value;
+          input.value = '';
+          const li = createLI(name);
+          ul.appendChild(li);
+      }
     });
     
     // changes class when checkbox is checked 

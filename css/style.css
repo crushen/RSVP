@@ -125,6 +125,11 @@ div > label {
   color: #767676;
 }
 
+#error {
+  display: none;
+  color: red;
+}
+
 /* responded */
 .responded {
   transition: 0.4s;
