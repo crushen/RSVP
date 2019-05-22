@@ -5,7 +5,7 @@ This RSVP app was started with the JavaScript Basics course on Treehouse, but I 
 #### So far, I have added these things to the app:
 
 * Changed the checkbox to say 'Confirm' when unchecked, and 'Confirmed' once checked (previously it was always 'Confirmed'). I did this by targeting the text node of the label with checkbox.parentNode.childNodes[0], and storing in a let named label. Then I changed the nodeValue of label to 'Confirmed' when checked = true, and 'Confirm' when checked = false.
-* Form validation - First I added an error message to the HTML, and used CSS to set it's display property to 'none'. Then I used a conditional statment in the Submit event. If the input field is empty, the error message's display proerpty will change to block. Otherwise it will display none again, and the rest of the event will run. 
+* Form validation - First I added an error message to the HTML, and used CSS to set it's display property to 'none'. Then I used a conditional statment in the Submit event. If the input field is empty, the error message's display proerpty will change to 'block'. Otherwise it will display 'none' again, and the rest of the event will run. 
 
 #### These are things that will be added in the future:
 
