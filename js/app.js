@@ -53,6 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
         .appendChild(createElement('input', 'type', 'checkbox'));
       appendToLI('button', 'textContent', 'edit');
       appendToLI('button', 'textContent', 'remove');
+      appendToLI('button', 'textContent', 'notes');
       return li;
     }
     
@@ -92,6 +93,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const button = e.target;
         const li = button.parentNode;
         const ul = li.parentNode;
+        const name = li.firstElementChild;
+        const checkbox = button.previousElementSibling.previousElementSibling;
         const action = button.textContent;
         const nameAction = {
           remove: () => {
@@ -113,6 +116,20 @@ document.addEventListener('DOMContentLoaded', () => {
             li.insertBefore(span, input);
             li.removeChild(input);
             button.textContent = 'edit';
+          },
+          notes: () => {
+            const input = document.createElement('input');
+            input.type = 'text';
+            li.insertBefore(input, checkbox);
+            button.textContent = 'add';
+          },
+          add: () => {
+            const span = document.createElement('span');
+            const input = name.nextElementSibling.nextElementSibling;
+            span.textContent = input.value;
+            li.insertBefore(span, input);
+            li.removeChild(input);
+            button.textContent = 'notes';
           }
         };
         // select and run action in button's name
