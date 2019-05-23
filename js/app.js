@@ -6,7 +6,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const div = document.createElement('div');
     const filterLabel = document.createElement('label');
     const filterCheckBox = document.createElement('input');
-    const error = document.getElementById('error');
+    const nameError = document.getElementById('nameError');
+    
     // creates filtering checkbox
     filterLabel.textContent = ("Hide those who haven't responded");
     filterCheckBox.type = 'checkbox';
@@ -48,12 +49,12 @@ document.addEventListener('DOMContentLoaded', () => {
         return element;
       }
       const li = document.createElement('li');
+      li.className = 'list-item';
       appendToLI('span', 'textContent', text);
       appendToLI('label', 'textContent', 'Confirm')
         .appendChild(createElement('input', 'type', 'checkbox'));
       appendToLI('button', 'textContent', 'edit');
       appendToLI('button', 'textContent', 'remove');
-      appendToLI('button', 'textContent', 'notes');
       return li;
     }
     
@@ -62,13 +63,13 @@ document.addEventListener('DOMContentLoaded', () => {
     form.addEventListener('submit', (e) => {
       e.preventDefault();
       if(input.value === '') {
-        error.style.display = 'block';
+        nameError.style.display = 'block';
       } else {
-          error.style.display = 'none';
-          const name = input.value;
-          input.value = '';
-          const li = createLI(name);
-          ul.appendChild(li);
+        nameError.style.display = 'none';
+        const name = input.value;
+        input.value = '';
+        const li = createLI(name);
+        ul.appendChild(li);
       }
     });
     
@@ -93,8 +94,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const button = e.target;
         const li = button.parentNode;
         const ul = li.parentNode;
-        const name = li.firstElementChild;
-        const checkbox = button.previousElementSibling.previousElementSibling;
         const action = button.textContent;
         const nameAction = {
           remove: () => {
@@ -116,20 +115,6 @@ document.addEventListener('DOMContentLoaded', () => {
             li.insertBefore(span, input);
             li.removeChild(input);
             button.textContent = 'edit';
-          },
-          notes: () => {
-            const input = document.createElement('input');
-            input.type = 'text';
-            li.insertBefore(input, checkbox);
-            button.textContent = 'add';
-          },
-          add: () => {
-            const span = document.createElement('span');
-            const input = name.nextElementSibling.nextElementSibling;
-            span.textContent = input.value;
-            li.insertBefore(span, input);
-            li.removeChild(input);
-            button.textContent = 'notes';
           }
         };
         // select and run action in button's name

@@ -125,7 +125,7 @@ div > label {
   color: #767676;
 }
 
-#error {
+#nameError {
   display: none;
   color: red;
 }
